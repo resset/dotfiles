@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "gdb",
+            "request": "launch",
+            "name": "Debug",
+            "gdbpath": "/path/to/arm-none-eabi-gdb",
+            "target": "./build/ch.elf",
+            "cwd": "${workspaceRoot}",
+            "autorun": [
+                "set mem inaccessible-by-default off",
+                "target extended-remote localhost:3333",
+                "monitor reset halt",
+                "monitor flash write_image erase build/ch.elf",
+                "monitor reset halt",
+                "tbreak main",
+                "continue"
+            ]
+        }
+    ]
+}
+
