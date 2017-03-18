@@ -1,0 +1,14 @@
+"rtls-imu-anchor":
+	debugger: "dbg-gdb"
+	path: "build/ch.elf"
+	gdb_executable: "/path/to/arm-none-eabi-gdb"
+	gdb_arguments: ""
+	gdb_commands: [
+		"set mem inaccessible-by-default off"
+		"target extended-remote localhost:3333"
+		"monitor reset halt"
+		"monitor flash write_image erase build/ch.elf"
+		"monitor reset halt"
+		"tbreak main"
+		"continue"
+	]
